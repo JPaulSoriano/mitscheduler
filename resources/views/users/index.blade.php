@@ -27,8 +27,8 @@
           <div class="row">
               <div class="col-sm-12">
                   <div class="form-group">
-                      <label>Name:</label>
-                      {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                      <label>Username:</label>
+                      {!! Form::text('name', null, array('placeholder' => 'Username','class' => 'form-control')) !!}
                   </div>
               </div>
               <div class="col-sm-12">
@@ -67,7 +67,7 @@
       <table class="table table-bordered">
         <tr>
           <th>No</th>
-          <th>Name</th>
+          <th>Username</th>
           <th>Email</th>
           <th>Roles</th>
           <th>Action</th>

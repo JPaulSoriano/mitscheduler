@@ -25,8 +25,17 @@
                 <div class="card-body">
                     <form action="{{ route('curricula.store') }}" method="POST">
                         @csrf
-
                         <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Course</label>
+                                    <select class="form-control" name="course_id">
+                                        @foreach ($courses as $course)
+                                        <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Name:</label>
@@ -51,6 +60,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th>No</th>
+                    <th>Course</th>
                     <th>Name</th>
                     <th>Year</th>
                     <th>Action</th>
@@ -58,9 +68,10 @@
                 @foreach ($curricula as $curriculum)
                 <tr>
                     <td>{{ ++$i }}</td>
+                    <td>{{ $curriculum->course->name }}</td>
                     <td>{{ $curriculum->name }}</td>
                     <td>{{ $curriculum->year }}</td>
-                    <td><a class="btn btn-sm btn-primary" href="{{ route('curricula.subjects.index', $curriculum) }}">Manage Subjects</a></td>
+                    <td><a class="btn btn-sm btn-primary" href="{{ route('curricula.subjects.index', $curriculum) }}">Subjects</a></td>
                 </tr>
                 @endforeach
             </table>

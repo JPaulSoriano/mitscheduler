@@ -2,27 +2,25 @@
 
 namespace App\Http\Controllers;
 use App\Room;
+use App\Building;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    public function index()
+    public function index(Building $building)
     {
-        $rooms = Room::latest()->paginate(5);
-        return view('rooms.index',compact('rooms'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('rooms.index', compact('building'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Building $building)
     {
         request()->validate([
-            'no' => 'required',
-            'building' => 'required',
+            'name' => 'required'
         ]);
     
-        Room::create($request->all());
+        $building->rooms()->create($request->all());
     
-        return redirect()->route('rooms.index')
+        return redirect()->route('buildings.rooms.index', $building)
                         ->with('success','Room created successfully.');
     }
 

@@ -17,17 +17,13 @@
             {{ $message }}
         </div>
     @endif
-    <div class="row">
-        <div class="col-sm-12 text-center mb-4">
-            <h1><span class="font-weight-bold">Building: </span>{{ $building->name }}</h1>
-        </div>
-    </div>
+
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-header">Add Room</div>
+                <div class="card-header">Add Building</div>
                 <div class="card-body">
-                    <form action="{{ route('buildings.rooms.store', $building)}}" method="POST">
+                    <form action="{{ route('buildings.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-sm-12">
@@ -45,17 +41,22 @@
             </div>
         </div>
         <div class="col-sm-8">
-            <h3>Rooms</h3>
+            <h3>Buildings</h3>
             <table class="table table-bordered">
                 <tr>
+                    <th>No</th>
                     <th>Name</th>
+                    <th>Action</th>
                 </tr>
-                @foreach ($building->rooms as $room)
+                @foreach ($buildings as $building)
                 <tr>
-                    <td>{{ $room->name }}</td>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $building->name }}</td>
+                    <td><a class="btn btn-sm btn-primary" href="{{ route('buildings.rooms.index', $building) }}">Rooms</a></td>
                 </tr>
                 @endforeach
             </table>
+            {!! $buildings->links() !!}
         </div>
     </div>
 @endsection

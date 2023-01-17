@@ -25,8 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
-    Route::resource('courses','CourseController');
-    Route::resource('rooms','RoomController');
+    Route::resource('departments','DepartmentController');
+    Route::resource('departments.courses', 'CourseController')->shallow();
+    Route::resource('buildings','BuildingController');
+    Route::resource('buildings.rooms', 'RoomController')->shallow();
     Route::resource('sections','SectionController');
     Route::resource('curricula','CurriculumController');
     Route::resource('curricula.subjects', 'SubjectController')->shallow();

@@ -17,11 +17,15 @@
             {{ $message }}
         </div>
     @endif
-
+    <div class="row">
+        <div class="col-sm-12 text-center mb-4">
+            <h1><span class="font-weight-bold">Curriculum: </span>{{ $curriculum->name }} <span class="font-weight-bold">Course: </span>{{ $curriculum->course->name }}</h1>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
-                <div class="card-header">Add Room</div>
+                <div class="card-header">Add Subject</div>
                 <div class="card-body">
                     <form action="{{ route('curricula.subjects.store', $curriculum)}}" method="POST">
                         @csrf
@@ -87,6 +91,7 @@
             </div>
         </div>
         <div class="col-sm-8">
+            <h3>Subjects</h3>
             <table class="table table-bordered">
                 <tr>
                     <th>Period</th>

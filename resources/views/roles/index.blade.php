@@ -51,6 +51,7 @@
         </div>
     </div>
     <div class="col-sm-6">
+        <h3>Roles</h3>
         <table class="table table-bordered">
             <tr>
                 <th>No</th>
@@ -62,7 +63,7 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $role->name }}</td>
                 <td>
-                    <a class="btn btn-sm btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                    <a class="btn btn-sm btn-primary" href="{{ route('roles.edit',$role->id) }}">Permissions</a>
                 </td>
             </tr>
             @endforeach

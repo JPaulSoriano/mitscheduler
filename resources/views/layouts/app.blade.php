@@ -44,10 +44,10 @@
                         @else
                             <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
-                            <li><a class="nav-link" href="{{ route('courses.index') }}">Manage Course</a></li>
-                            <li><a class="nav-link" href="{{ route('rooms.index') }}">Manage Rooms</a></li>
-                            <li><a class="nav-link" href="{{ route('sections.index') }}">Manage Sections</a></li>
+                            <li><a class="nav-link" href="{{ route('departments.index') }}">Manage Departments</a></li>
                             <li><a class="nav-link" href="{{ route('curricula.index') }}">Manage Curricula</a></li>
+                            <li><a class="nav-link" href="{{ route('buildings.index') }}">Manage Buildings</a></li>
+                            <li><a class="nav-link" href="{{ route('sections.index') }}">Manage Sections</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

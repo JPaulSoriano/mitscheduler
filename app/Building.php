@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class Building extends Model
 {
     protected $fillable = [
         'name'
     ];
 
-    public function building(){
-        return $this->belongsTo('App\Building');
+    public function rooms()
+    {
+        return $this->hasMany('App\Room');
     }
 }

@@ -11,7 +11,7 @@ class Subject extends Model
         'period', 'level', 'code', 'name', 'lec', 'lab', 'units'
     ];
 
-    public function sector(){
-        return $this->belongsTo('App\Sector');
+    public function curriculum(){
+        return $this->belongsTo('App\Curriculum');
     }
 }

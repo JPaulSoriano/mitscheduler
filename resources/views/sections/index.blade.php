@@ -63,13 +63,13 @@
         </div>
     </div>
     <div class="col-sm-8">
+    <h3>Sections</h3>
     <table class="table table-bordered">
         <tr>
             <th>No</th>
             <th>Course</th>
             <th>Year</th>
             <th>Name</th>
-            <th>Action</th>
         </tr>
 	    @foreach ($sections as $section)
 	    <tr>
@@ -77,9 +77,6 @@
 	        <td>{{ $section->course->name }}</td>
             <td>{{ $section->year }}</td>
             <td>{{ $section->name }}</td>
-	        <td>
-                <a class="btn btn-sm btn-primary" href="">Archive</a>
-	        </td>
 	    </tr>
 	    @endforeach
     </table>

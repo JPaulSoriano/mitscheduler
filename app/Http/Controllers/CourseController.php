@@ -1,27 +1,26 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Department;
 use App\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function index()
+    public function index(Department $department)
     {
-        $courses = Course::latest()->paginate(5);
-        return view('courses.index',compact('courses'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('courses.index', compact('department'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Department $department)
     {
         request()->validate([
-            'name' => 'required',
+            'name' => 'required'
         ]);
     
-        Course::create($request->all());
+        $department->courses()->create($request->all());
     
-        return redirect()->route('courses.index')
+        return redirect()->route('departments.courses.index', $department)
                         ->with('success','Course created successfully.');
     }
 
