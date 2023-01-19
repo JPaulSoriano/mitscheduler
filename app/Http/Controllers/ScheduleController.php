@@ -50,7 +50,13 @@ class ScheduleController extends Controller
             'teacher_id' => 'required'
         ]);
   
-        $schedule->update($request->all());
+        if($request->teacher_id == $schedule->teacher_id)
+        {
+            $schedule->update(['teacher_id' => null]);
+        }else{
+
+            $schedule->update($request->all());
+        }
   
         return redirect()->route('teachers.schedules.assign', $request->teacher_id)
                         ->with('success','Schedule assigned successfully');
