@@ -64,13 +64,13 @@
       </div>
     </div>
     <div class="col-sm-8">
+      <h3>Users</h3>
       <table class="table table-bordered">
         <tr>
           <th>No</th>
           <th>Username</th>
           <th>Email</th>
           <th>Roles</th>
-          <th>Action</th>
         </tr>
         @foreach ($data as $key => $user)
           <tr>
@@ -87,6 +87,7 @@
             <td>
               <a class="btn btn-sm btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
             </td>
+            <td><a class="btn btn-sm btn-primary" href="{{ route('users.teachers.index', $user) }}">Profile</a></td>
           </tr>
         @endforeach
      </table>

@@ -15,7 +15,7 @@ class SubjectController extends Controller
 
     public function store(Request $request, Curriculum $curriculum)
     {
-        request()->validate([
+        $request->validate([
             'period' => 'required',
             'level' => 'required',
             'code' => 'required',

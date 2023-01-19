@@ -17,7 +17,7 @@ class SectionController extends Controller
 
     public function store(Request $request)
     {
-        request()->validate([
+        $request->validate([
             'course_id' => 'required',
             'year' => 'required',
             'name' => 'required'

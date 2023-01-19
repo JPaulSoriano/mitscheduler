@@ -25,6 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
+    Route::get('loads','TeacherController@load')->name('load');
+    Route::resource('users.teachers', 'TeacherController')->shallow();
     Route::resource('departments','DepartmentController');
     Route::resource('departments.courses', 'CourseController')->shallow();
     Route::resource('buildings','BuildingController');
@@ -32,6 +34,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('sections','SectionController');
     Route::resource('curricula','CurriculumController');
     Route::resource('curricula.subjects', 'SubjectController')->shallow();
+    Route::resource('schedules','ScheduleController');
+    Route::resource('teachers.schedules', 'ScheduleController')->shallow();
+    Route::get('assign/{teacher}', 'ScheduleController@assign')->name('teachers.schedules.assign');
 });
 
 Auth::routes();

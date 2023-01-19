@@ -14,7 +14,7 @@ class RoomController extends Controller
 
     public function store(Request $request, Building $building)
     {
-        request()->validate([
+        $request->validate([
             'name' => 'required'
         ]);
     
@@ -23,7 +23,5 @@ class RoomController extends Controller
         return redirect()->route('buildings.rooms.index', $building)
                         ->with('success','Room created successfully.');
     }
-
-   
 
 }

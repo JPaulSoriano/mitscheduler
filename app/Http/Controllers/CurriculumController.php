@@ -17,7 +17,7 @@ class CurriculumController extends Controller
 
     public function store(Request $request)
     {
-        request()->validate([
+        $request->validate([
             'course_id' => 'required',
             'name' => 'required',
             'year' => 'required'

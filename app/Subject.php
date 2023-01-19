@@ -14,4 +14,9 @@ class Subject extends Model
     public function curriculum(){
         return $this->belongsTo('App\Curriculum');
     }
+
+    public function schedules()
+    {
+        return $this->hasMany('App\Schedule');
+    }
 }

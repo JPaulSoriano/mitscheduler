@@ -13,4 +13,9 @@ class Room extends Model
     public function building(){
         return $this->belongsTo('App\Building');
     }
+
+    public function schedules()
+    {
+        return $this->hasMany('App\Schedule');
+    }
 }
