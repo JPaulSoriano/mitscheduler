@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('departments','DepartmentController');
     Route::resource('departments.courses', 'CourseController')->shallow();
     Route::resource('buildings','BuildingController');
+    Route::resource('specializations','SpecializationController');
     Route::resource('buildings.rooms', 'RoomController')->shallow();
     Route::resource('sections','SectionController');
     Route::resource('curricula','CurriculumController');

@@ -54,6 +54,16 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
+                                    <label>Specialization:</label>
+                                    <select class="form-control" name="specialization_id">
+                                        @foreach ($specializations as $specialization)
+                                        <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
                                     <label>Code:</label>
                                     <input type="text" name="code" class="form-control" placeholder="Code">
                                 </div>
@@ -95,6 +105,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Period</th>
+                    <th>Specialization</th>
                     <th>Level</th>
                     <th>Code</th>
                     <th>Name</th>
@@ -105,6 +116,7 @@
                 @foreach ($curriculum->subjects as $subject)
                 <tr>
                     <td>{{ $subject->period }}</td>
+                    <td>{{ $subject->specialization->name }}</td>
                     <td>{{ $subject->level }}</td>
                     <td>{{ $subject->code }}</td>
                     <td>{{ $subject->name }}</td>

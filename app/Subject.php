@@ -8,7 +8,7 @@ class Subject extends Model
 {
 
     protected $fillable = [
-        'period', 'level', 'code', 'name', 'lec', 'lab', 'units'
+        'period', 'level', 'code', 'name', 'lec', 'lab', 'units', 'specialization_id'
     ];
 
     public function curriculum(){
@@ -18,5 +18,9 @@ class Subject extends Model
     public function schedules()
     {
         return $this->hasMany('App\Schedule');
+    }
+
+    public function specialization(){
+        return $this->belongsTo('App\Specialization');
     }
 }

@@ -24,7 +24,13 @@ class ScheduleController extends Controller
     {
         $schedules = Schedule::whereNull('teacher_id')->get();
         $myschedules = Schedule::where('teacher_id', '=', $teacher->id)->get();
-        return view('schedules.assign', compact('schedules', 'teacher', 'myschedules'));
+
+        $recoms = Schedule::whereNull('teacher_id')->whereHas('subject', function($query)use($teacher)
+        {
+            $query->where('specialization_id', $teacher->specialization_id);
+        })->get();
+
+        return view('schedules.assign', compact('schedules', 'teacher', 'myschedules', 'recoms'));
     }
 
     public function store(Request $request)

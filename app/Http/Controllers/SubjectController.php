@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 use App\Subject;
 use App\Curriculum;
+use App\Specialization;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
     public function index(Curriculum $curriculum)
     {
-        return view('subjects.index', compact('curriculum'));
+        $specializations = Specialization::all();
+        return view('subjects.index', compact('curriculum', 'specializations'));
     }
 
 
@@ -22,7 +24,8 @@ class SubjectController extends Controller
             'name' => 'required',
             'lec' => 'required',
             'lab' => 'required',
-            'units' => 'required'
+            'units' => 'required',
+            'specialization_id' => 'required'
         ]);
     
         $curriculum->subjects()->create($request->all());

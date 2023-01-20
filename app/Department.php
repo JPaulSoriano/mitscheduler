@@ -14,8 +14,9 @@ class Department extends Model
     {
         return $this->hasMany('App\Course');
     }
-    public function users()
+
+    public function teachers()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Teacher');
     }
 }

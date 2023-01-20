@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Teacher;
 use App\User;
 use App\Department;
+use App\Specialization;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -11,7 +12,8 @@ class TeacherController extends Controller
     public function index(User $user)
     {
         $departments = Department::all();
-        return view('teachers.index', compact('user', 'departments'));
+        $specializations = Specialization::all();
+        return view('teachers.index', compact('user', 'departments', 'specializations'));
     }
 
 
@@ -30,7 +32,8 @@ class TeacherController extends Controller
             'address' => 'required',
             'gender' => 'required',
             'contactno' => 'required',
-            'department_id' => 'required'
+            'department_id' => 'required',
+            'specialization_id' => 'required'
         ]);
     
         $user->teacher()->updateOrCreate(

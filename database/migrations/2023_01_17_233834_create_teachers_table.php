@@ -23,6 +23,7 @@ class CreateTeachersTable extends Migration
             $table->string('contactno');
             $table->foreignId('user_id');
             $table->foreignId('department_id');
+            $table->foreignId('specialization_id');
             $table->timestamps();
         });
     }

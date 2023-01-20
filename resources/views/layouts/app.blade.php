@@ -45,6 +45,7 @@
                             <li><a class="nav-link" href="{{ route('users.index') }}">Users</a></li>
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
                             <li><a class="nav-link" href="{{ route('departments.index') }}">Departments</a></li>
+                            <li><a class="nav-link" href="{{ route('specializations.index') }}">Specializations</a></li>
                             <li><a class="nav-link" href="{{ route('curricula.index') }}">Curricula</a></li>
                             <li><a class="nav-link" href="{{ route('buildings.index') }}">Buildings</a></li>
                             <li><a class="nav-link" href="{{ route('sections.index') }}">Sections</a></li>

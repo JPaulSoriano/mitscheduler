@@ -23,6 +23,7 @@ class CreateSubjectsTable extends Migration
             $table->string('lec');
             $table->string('lab');
             $table->string('units');
+            $table->foreignId('specialization_id');
             $table->timestamps();
         });
     }

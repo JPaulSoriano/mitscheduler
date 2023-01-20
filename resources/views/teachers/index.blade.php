@@ -71,16 +71,26 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Department:</label>
-                                <select class="form-control" name="department_id">
-                                    @foreach ($departments as $department)
-                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Department:</label>
+                                    <select class="form-control" name="department_id">
+                                        @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Specialization:</label>
+                                    <select class="form-control" name="specialization_id">
+                                        @foreach ($specializations as $specialization)
+                                        <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-sm-12 text-center">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

@@ -8,7 +8,7 @@ class Teacher extends Model
 {
 
     protected $fillable = [
-        'lastname', 'firstname', 'mi', 'address', 'gender', 'contactno', 'department_id'
+        'lastname', 'firstname', 'mi', 'address', 'gender', 'contactno', 'department_id', 'specialization_id'
     ];
 
 
@@ -18,6 +18,10 @@ class Teacher extends Model
 
     public function department(){
         return $this->belongsTo('App\Department');
+    }
+
+    public function specialization(){
+        return $this->belongsTo('App\Specialization');
     }
 
     public function schedules()

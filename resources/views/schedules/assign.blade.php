@@ -24,7 +24,7 @@
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <h3>Available Schedules</h3>
+        <h3>All Available Schedules</h3>
         <table class="table table-bordered">
             <tr>
                 <th>Section</th>
@@ -54,7 +54,37 @@
         </table>
     </div>
     <div class="col-sm-6">
-        <h3>Assigned Subjects</h3>
+        <h3>Recommended Schedules</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Section</th>
+                <th>Subject</th>
+                <th>Room</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            @foreach ($recoms as $recom)
+            <tr>
+                <td>{{ $recom->section->name }}</td>
+                <td>{{ $recom->subject->name }}</td>
+                <td>{{ $recom->room->name }}</td>
+                <td>{{ $recom->day }}</td>
+                <td>{{ $recom->time_start }} - {{ $recom->time_end }}</td>
+                <td>
+                    <form action="{{ route('schedules.update', $schedule->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="teacher_id" class="form-control" value="{{$teacher->id}}">
+                        <button type="submit" class="btn btn-sm btn-primary">Load</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
+    <div class="col-sm-12">
+        <h3>Assigned Schedules</h3>
         <table class="table table-bordered">
             <tr>
                 <th>Section</th>
