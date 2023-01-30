@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class CurriculumController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manage-curricula');
+    }
+
     public function index()
     {
         $courses = Course::all();

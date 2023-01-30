@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Schedule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $myschedules = Schedule::orderBy('day', 'ASC')->where('teacher_id', optional(Auth::user()->teacher)->id)->get()->sortBy('time_start');
+        $monday = Schedule::where('teacher_id', optional(Auth::user()->teacher)->id)->where('day', 'MON')->get()->sortBy('time_start');
+        $tuesday = Schedule::where('teacher_id', optional(Auth::user()->teacher)->id)->where('day', 'TUE')->get()->sortBy('time_start');
+        $wednesday = Schedule::where('teacher_id', optional(Auth::user()->teacher)->id)->where('day', 'WED')->get()->sortBy('time_start');
+        $thursday = Schedule::where('teacher_id', optional(Auth::user()->teacher)->id)->where('day', 'THU')->get()->sortBy('time_start');
+        $friday = Schedule::where('teacher_id', optional(Auth::user()->teacher)->id)->where('day', 'FRI')->get()->sortBy('time_start');
+        $saturday = Schedule::where('teacher_id', optional(Auth::user()->teacher)->id)->where('day', 'SAT')->get()->sortBy('time_start');
+        $sunday = Schedule::where('teacher_id', optional(Auth::user()->teacher)->id)->where('day', 'SUN')->get()->sortBy('time_start');
+        return view('home', compact('myschedules', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'));
     }
 }

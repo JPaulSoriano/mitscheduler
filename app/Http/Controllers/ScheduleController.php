@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manage-schedule');
+    }
+
     public function index()
     {
         $sections = Section::all();

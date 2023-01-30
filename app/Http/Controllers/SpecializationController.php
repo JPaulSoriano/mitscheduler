@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class SpecializationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manage-specialization');
+    }
+
     public function index()
     {
         $specializations = Specialization::latest()->paginate(5);

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class BuildingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manage-building');
+    }
+
     public function index()
     {
         $buildings = Building::latest()->paginate(5);

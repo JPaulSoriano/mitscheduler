@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manage-section');
+    }
+
     public function index()
     {
         $courses = Course::all();

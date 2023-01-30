@@ -11,6 +11,10 @@ use DB;
     
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manage-role');
+    }
 
     public function index(Request $request)
     {

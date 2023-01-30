@@ -12,6 +12,11 @@ use Hash;
     
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:manage-user');
+    }
+
     public function index(Request $request)
     {
         $roles = Role::pluck('name','name')->all();

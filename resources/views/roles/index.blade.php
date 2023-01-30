@@ -20,6 +20,24 @@
 
    <div class="row">
     <div class="col-sm-6">
+    <div class="card mb-2">
+            <div class="card-header">Add Permission</div>
+            <div class="card-body">
+                {!! Form::open(array('route' => 'permissions.store','method'=>'POST')) !!}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </div>
+        </div>
         <div class="card">
             <div class="card-header">Add Role</div>
             <div class="card-body">
