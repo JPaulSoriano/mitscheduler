@@ -47,7 +47,7 @@
                                     {{ $sun->section->name }}<br>
                                     {{ $sun->subject->name }}<br>
                                     {{ $sun->room->name }}<br>
-                                    {{ $sun->time_start }} - {{ $mon->time_end }}
+                                    {{ $sun->time_start }} - {{ $sun->time_end }}
                                 </div>
                             @endforeach
                         </td>
@@ -67,7 +67,7 @@
                                     {{ $tue->section->name }}<br>
                                     {{ $tue->subject->name }}<br>
                                     {{ $tue->room->name }}<br>
-                                    {{ $tue->time_start }} - {{ $mon->time_end }}
+                                    {{ $tue->time_start }} - {{ $tue->time_end }}
                                 </div>
                             @endforeach
                         </td>
@@ -77,7 +77,7 @@
                                     {{ $wed->section->name }}<br>
                                     {{ $wed->subject->name }}<br>
                                     {{ $wed->room->name }}<br>
-                                    {{ $wed->time_start }} - {{ $mon->time_end }}
+                                    {{ $wed->time_start }} - {{ $wed->time_end }}
                                 </div>
                             @endforeach
                         </td>
@@ -87,7 +87,7 @@
                                     {{ $thu->section->name }}<br>
                                     {{ $thu->subject->name }}<br>
                                     {{ $thu->room->name }}<br>
-                                    {{ $thu->time_start }} - {{ $mon->time_end }}
+                                    {{ $thu->time_start }} - {{ $thu->time_end }}
                                 </div>
                             @endforeach
                         </td>
@@ -97,7 +97,7 @@
                                     {{ $fri->section->name }}<br>
                                     {{ $fri->subject->name }}<br>
                                     {{ $fri->room->name }}<br>
-                                    {{ $fri->time_start }} - {{ $mon->time_end }}
+                                    {{ $fri->time_start }} - {{ $fri->time_end }}
                                 </div>
                             @endforeach
                         </td>
@@ -107,7 +107,7 @@
                                     {{ $sat->section->name }}<br>
                                     {{ $sat->subject->name }}<br>
                                     {{ $sat->room->name }}<br>
-                                    {{ $sat->time_start }} - {{ $mon->time_end }}
+                                    {{ $sat->time_start }} - {{ $sat->time_end }}
                                 </div>
                             @endforeach
                         </td>

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\AcademicYear;
 class AcademicYearTableSeeder extends Seeder
 {
     /**
