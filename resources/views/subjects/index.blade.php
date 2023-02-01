@@ -19,7 +19,7 @@
     @endif
     <div class="row">
         <div class="col-sm-12 text-center mb-4">
-            <h1><span class="font-weight-bold">Curriculum: </span>{{ $curriculum->name }} <span class="font-weight-bold">Course: </span>{{ $curriculum->course->name }}</h1>
+            <h1><span class="font-weight-bold">Course: </span>{{ $curriculum->course->name }}</h1>
         </div>
     </div>
     <div class="row">
@@ -76,20 +76,20 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label>Lec:</label>
-                                    <input type="text" name="lec" class="form-control" placeholder="Lec">
+                                    <label>Lec Units:</label>
+                                    <input type="text" name="lec" class="form-control unit" placeholder="Lec" value="0" onblur="findTotal()">
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label>Lab:</label>
-                                    <input type="text" name="lab" class="form-control" placeholder="Lab">
+                                    <label>Lab Units:</label>
+                                    <input type="number" name="lab" class="form-control unit" placeholder="Lab" value="0" onblur="findTotal()">
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label>Units:</label>
-                                    <input type="text" name="units" class="form-control" placeholder="Units">
+                                    <label>Total Units:</label>
+                                    <input type="number" name="units" class="form-control" placeholder="Units" value="0" id="total" readonly>
                                 </div>
                             </div>
                             <div class="col-sm-12 text-center">
@@ -128,4 +128,18 @@
             </table>
         </div>
     </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+function findTotal(){
+    var arr = document.getElementsByClassName('unit');
+    var tot=0;
+    for(var i=0;i<arr.length;i++){
+        if(parseInt(arr[i].value))
+            tot += parseInt(arr[i].value);
+    }
+    document.getElementById('total').value = tot;
+}
+
+</script>
 @endsection

@@ -38,8 +38,8 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label>Year</label>
-                                <select class="form-control" name="year">
+                                <label>Level</label>
+                                <select class="form-control" name="level">
                                     <option value="1st Year">1st Year</option>
                                     <option value="2nd Year">2nd Year</option>
                                     <option value="3rd Year">3rd Year</option>
@@ -66,21 +66,22 @@
     <h3>Sections</h3>
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
             <th>Course</th>
-            <th>Year</th>
+            <th>Level</th>
             <th>Name</th>
+            <th>A.Y</th>
+            <th>Action</th>
         </tr>
 	    @foreach ($sections as $section)
 	    <tr>
-	        <td>{{ ++$i }}</td>
 	        <td>{{ $section->course->name }}</td>
-            <td>{{ $section->year }}</td>
+            <td>{{ $section->level }}</td>
             <td>{{ $section->name }}</td>
+            <td>{{ $section->academic_year }}</td>
+            <td><a class="btn btn-sm btn-primary" href="{{ route('sections.schedules.index', $section) }}">Schedules</a></td>
 	    </tr>
 	    @endforeach
     </table>
-    {!! $sections->links() !!}
     </div>
 </div>
 

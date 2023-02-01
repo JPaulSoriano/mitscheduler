@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     protected $fillable = [
-        'teacher_id', 'section_id', 'subject_id', 'room_id', 'time_start', 'time_end', 'day'
+        'teacher_id', 'subject_id', 'room_id', 'time_start', 'time_end', 'day'
     ];
 
     public function section(){

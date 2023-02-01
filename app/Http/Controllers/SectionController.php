@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Section;
 use App\Course;
+use App\AcademicYear;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -15,20 +16,22 @@ class SectionController extends Controller
     public function index()
     {
         $courses = Course::all();
-        $sections = Section::latest()->paginate(5);
-        return view('sections.index',compact('sections', 'courses'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $sections = Section::where('academic_year', '=', AcademicYear::latest()->first()->name)->get();
+        return view('sections.index',compact('sections', 'courses'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'course_id' => 'required',
-            'year' => 'required',
+            'level' => 'required',
             'name' => 'required'
         ]);
-    
-        Section::create($request->all());
+        
+        $input = $request->all();
+        $input['academic_year'] = AcademicYear::latest()->first()->name;
+
+        Section::create($input);
     
         return redirect()->route('sections.index')
                         ->with('success','Section created successfully.');

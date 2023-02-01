@@ -50,7 +50,6 @@
                             <li><a class="nav-link" href="{{ route('curricula.index') }}">Curricula</a></li>
                             <li><a class="nav-link" href="{{ route('buildings.index') }}">Buildings</a></li>
                             <li><a class="nav-link" href="{{ route('sections.index') }}">Sections</a></li>
-                            <li><a class="nav-link" href="{{ route('schedules.index') }}">Schedules</a></li>
                             <li><a class="nav-link" href="{{ route('load') }}">Load</a></li>
                             <li><a class="nav-link" href="{{ route('academicyears.index') }}">AY</a></li>
                         @endrole
@@ -86,5 +85,6 @@
             </div>
         </main>
     </div>
+    @yield('script')
 </body>
 </html>

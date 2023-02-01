@@ -34,9 +34,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('specializations','SpecializationController');
     Route::resource('buildings.rooms', 'RoomController')->shallow();
     Route::resource('sections','SectionController');
+    Route::resource('sections.schedules', 'ScheduleController')->shallow();
     Route::resource('curricula','CurriculumController');
     Route::resource('curricula.subjects', 'SubjectController')->shallow();
-    Route::resource('schedules','ScheduleController');
     Route::resource('teachers.schedules', 'ScheduleController')->shallow();
     Route::get('assign/{teacher}', 'ScheduleController@assign')->name('teachers.schedules.assign');
     Route::resource('academicyears','AcademiCyearController');

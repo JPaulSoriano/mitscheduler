@@ -9,7 +9,7 @@
         </tr>
 	    @foreach ($teachers as $teacher)
 	    <tr>
-	        <td>{{ $teacher->lastname }}</td>
+	        <td>{{ $teacher->full_name }}</td>
             <td><a class="btn btn-sm btn-primary" href="{{ route('teachers.schedules.assign', $teacher) }}">Load</a></td>
 	    </tr>
 	    @endforeach

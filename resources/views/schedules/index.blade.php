@@ -19,6 +19,11 @@
     @endif
 
 <div class="row">
+    <div class="col-sm-12 text-center mb-4">
+        <h1><span class="font-weight-bold">Section: </span>{{ $section->name }}</h1>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <div class="card">
             <div class="card-header">Add Schedule</div>
@@ -28,20 +33,10 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label>Section:</label>
-                                <select class="form-control" name="section_id">
-                                    @foreach ($sections as $section)
-                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
                                 <label>Subject:</label>
                                 <select class="form-control" name="subject_id">
                                     @foreach ($subjects as $subject)
-                                    <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                    <option value="{{ $subject->id }}">{{ $subject->name }} || {{ $subject->level }} || {{ $subject->period }}</option>
                                     @endforeach
                                 </select>
                             </div>

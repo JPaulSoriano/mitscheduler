@@ -6,6 +6,7 @@ use App\Section;
 use App\Subject;
 use App\Room;
 use App\Teacher;
+use App\AcademicYear;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -15,14 +16,13 @@ class ScheduleController extends Controller
         $this->middleware('permission:manage-schedule');
     }
 
-    public function index()
+    public function index(Section $section)
     {
-        $sections = Section::all();
-        $subjects = Subject::all();
+        $subjects = Subject::where('level', $section->level)->get();
         $rooms = Room::all();
         $teachers = Teacher::all();
         $schedules = Schedule::latest()->paginate(5);
-        return view('schedules.index', compact('schedules', 'sections', 'subjects', 'rooms', 'teachers'));
+        return view('schedules.index', compact('subjects', 'rooms', 'teachers', 'schedules', 'section'));
     }
 
     public function assign(Teacher $teacher)
@@ -38,10 +38,9 @@ class ScheduleController extends Controller
         return view('schedules.assign', compact('schedules', 'teacher', 'myschedules', 'recoms'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Section $section)
     {
         $request->validate([
-            'section_id' => 'required',
             'subject_id' => 'required',
             'room_id' => 'required',
             'time_start' => 'required',
@@ -49,9 +48,10 @@ class ScheduleController extends Controller
             'day' => 'required'
         ]);
     
-        Schedule::create($request->all());
+        $section->schedules()->create($request->all());
+        
     
-        return redirect()->route('schedules.index')
+        return redirect()->route('sections.schedules.index', $section)
                         ->with('success','Schedule created successfully.');
     }
 

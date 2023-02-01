@@ -20,7 +20,7 @@
 
 
 <div class="row">
-<h1><span class="font-weight-bold">Username: </span>{{ $teacher->lastname }}</h1>
+<h1><span class="font-weight-bold">Teacher: </span>{{ $teacher->full_name }}</h1>
 </div>
 <div class="row">
     <div class="col-sm-6">

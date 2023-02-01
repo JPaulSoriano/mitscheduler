@@ -23,7 +23,7 @@ class SubjectController extends Controller
             'code' => 'required',
             'name' => 'required',
             'lec' => 'required',
-            'lab' => 'required',
+            'lab' => 'nullable',
             'units' => 'required',
             'specialization_id' => 'required'
         ]);

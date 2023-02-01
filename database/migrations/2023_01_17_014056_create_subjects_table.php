@@ -21,7 +21,7 @@ class CreateSubjectsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('lec');
-            $table->string('lab');
+            $table->string('lab')->nullable();
             $table->string('units');
             $table->foreignId('specialization_id');
             $table->timestamps();

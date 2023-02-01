@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Section extends Model
 {
     protected $fillable = [
-        'course_id', 'year', 'name'
+        'course_id', 'level', 'name', 'academic_year'
     ];
 
     public function course(){
@@ -17,5 +17,9 @@ class Section extends Model
     public function schedules()
     {
         return $this->hasMany('App\Schedule');
+    }
+
+    public function academic_year(){
+        return $this->belongsTo('App\AcademicYear');
     }
 }

@@ -28,4 +28,9 @@ class Teacher extends Model
     {
         return $this->hasMany('App\Schedule');
     }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->lastname}, {$this->firstname} {$this->mi}";
+    }
 }
