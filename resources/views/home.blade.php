@@ -3,27 +3,32 @@
 @section('content')
 @role("Teacher")
 <div class="row">
-<div class="col-sm-12">
+    <div class="col-sm-12">
         <h3>My Schedules</h3>
-        <table class="table table-bordered">
-            <tr>
-                <th>Section</th>
-                <th>Subject</th>
-                <th>Room</th>
-                <th>Day</th>
-                <th>Time</th>
-            </tr>
-            @foreach ($myschedules as $schedule)
-            <tr>
-                <td>{{ $schedule->section->name }}</td>
-                <td>{{ $schedule->subject->name }}</td>
-                <td>{{ $schedule->room->name }}</td>
-                <td>{{ $schedule->day }}</td>
-                <td>{{ $schedule->time_start }} - {{ $schedule->time_end }}</td>
-            </tr>
-            @endforeach
-        </table>
-</div>
+        <button type="button" class="btn btn-secondary btn-sm my-2" onclick="printJS('printJS-form', 'html')">
+            Print
+        </button>
+        <form id="printJS-form">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Section</th>
+                    <th>Subject</th>
+                    <th>Room</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                </tr>
+                @foreach ($myschedules as $schedule)
+                <tr>
+                    <td>{{ $schedule->section->name }}</td>
+                    <td>{{ $schedule->subject->name }}</td>
+                    <td>{{ $schedule->room->name }}</td>
+                    <td>{{ $schedule->day }}</td>
+                    <td>{{ $schedule->time_start }} - {{ $schedule->time_end }}</td>
+                </tr>
+                @endforeach
+            </table>
+        </form>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-12">

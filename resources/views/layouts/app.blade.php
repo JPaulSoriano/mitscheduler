@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://printjs-4de6.kxcdn.com/print.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -86,5 +87,6 @@
         </main>
     </div>
     @yield('script')
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 </body>
 </html>
