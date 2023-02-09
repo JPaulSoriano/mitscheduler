@@ -33,4 +33,13 @@ class Teacher extends Model
     {
         return "{$this->lastname}, {$this->firstname} {$this->mi}";
     }
+
+    public function totalUnits()
+    {
+        $total = 0;
+        foreach ($this->schedules as $schedule) {
+            $total += $schedule->subject->units;
+        }
+        return $total;
+    }
 }

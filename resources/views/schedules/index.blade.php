@@ -107,7 +107,6 @@
             </tr>
             @endforeach
         </table>
-        {!! $schedules->links() !!}
     </div>
 </div>
 @endsection

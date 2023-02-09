@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Scheduler
@@ -44,6 +44,7 @@
                    
                         @else
                         @role("Admin")
+                            <li><a class="nav-link" href="{{ route('home') }}">Dashboard</a></li>
                             <li><a class="nav-link" href="{{ route('users.index') }}">Users</a></li>
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
                             <li><a class="nav-link" href="{{ route('departments.index') }}">Departments</a></li>

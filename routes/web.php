@@ -39,5 +39,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('curricula.subjects', 'SubjectController')->shallow();
     Route::resource('teachers.schedules', 'ScheduleController')->shallow();
     Route::get('assign/{teacher}', 'ScheduleController@assign')->name('teachers.schedules.assign');
+    Route::get('viewschedules/{teacher}', 'ScheduleController@viewschedule')->name('viewschedules');
     Route::resource('academicyears','AcademiCyearController');
 });

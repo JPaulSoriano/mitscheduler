@@ -123,8 +123,48 @@
 </div>
 @endrole
 @role("Admin")
-<div class="col-sm-12">
-    <h3>Admin</h3>
+<div class="row">
+    <div class="col-sm-12">
+        <h1>Admin</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4 my-3">
+        <a class="btn btn-lg btn-block btn-primary p-5">
+            <h3>Teachers</h3>
+            <h1 class="font-weight-bold">{{$teachers}}</h1>
+        </a>
+    </div>
+    <div class="col-sm-4 my-3">
+        <a class="btn btn-lg btn-block btn-primary p-5">
+            <h3>Courses</h3>
+            <h1 class="font-weight-bold">{{$courses}}</h1>
+        </a>
+    </div>
+    <div class="col-sm-4 my-3">
+        <a class="btn btn-lg btn-block btn-primary p-5">
+            <h3>Subjects</h3>
+            <h1 class="font-weight-bold">{{$subjects}}</h1>
+        </a>
+    </div>
+    <div class="col-sm-4 my-3">
+        <a class="btn btn-lg btn-block btn-primary p-5">
+            <h3>Rooms</h3>
+            <h1 class="font-weight-bold">{{$rooms}}</h1>
+        </a>
+    </div>
+    <div class="col-sm-4 my-3">
+        <a class="btn btn-lg btn-block btn-primary p-5">
+            <h3>Schedules</h3>
+            <h1 class="font-weight-bold">{{$schedules}}</h1>
+        </a>
+    </div>
+    <div class="col-sm-4 my-3">
+        <a class="btn btn-lg btn-block btn-primary p-5">
+            <h3>Unassigned Sched</h3>
+            <h1 class="font-weight-bold">{{$unassigned}}</h1>
+        </a>
+    </div>
 </div>
 @endrole
 @endsection
