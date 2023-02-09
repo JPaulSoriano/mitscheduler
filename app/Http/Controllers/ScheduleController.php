@@ -73,7 +73,7 @@ class ScheduleController extends Controller
         if ($conflict) {
             return redirect()->route('sections.schedules.index', $section)
                             ->with('error','There is a conflict with another subject time in this section for the same day.');
-}
+        }
 
 
         // Check if There is a conflict with another schedule for the same room and day in this section.
