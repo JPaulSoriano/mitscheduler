@@ -47,62 +47,62 @@ class ScheduleController extends Controller
 
     public function store(Request $request, Section $section)
     {
+        $request->validate([
+            'subject_id' => 'required',
+            'room_id' => 'required',
+            'time_start' => 'required',
+            'time_end' => 'required',
+            'day' => 'required'
+        ]);
+
+        // Check if Subject already has a schedule for this section.
+        $schedule = $section->schedules()->where('subject_id', $request->subject_id)->first();
+        if ($schedule) {
+            return redirect()->route('sections.schedules.index', $section)
+                            ->with('error','Subject already has a schedule for this section.');
+        }
+
+         // Check if There is a conflict with another subject time in this section for the same day.
+        $conflict = $section->schedules()->where('subject_id', '!=', $request->subject_id)
+                            ->where('day', $request->day)
+                            ->where(function ($query) use ($request) {
+                                $query->whereBetween('time_start', [$request->time_start, $request->time_end])
+                                        ->orWhereBetween('time_end', [$request->time_start, $request->time_end]);
+                            })->first();
+
+        if ($conflict) {
+            return redirect()->route('sections.schedules.index', $section)
+                            ->with('error','There is a conflict with another subject time in this section for the same day.');
+}
+
+
+        // Check if There is a conflict with another schedule for the same room and day in this section.
+        $conflict = $section->schedules()->where('room_id', $request->room_id)
+                                    ->where('day', $request->day)
+                                    ->where(function ($query) use ($request) {
+                                        $query->whereBetween('time_start', [$request->time_start, $request->time_end])
+                                                ->orWhereBetween('time_end', [$request->time_start, $request->time_end]);
+                                    })->first();
+        if ($conflict) {
+            return redirect()->route('sections.schedules.index', $section)
+                            ->with('error','There is a conflict with another schedule for the same room and day in this section.');
+        }
         
-    $request->validate([
-        'subject_id' => 'required',
-        'room_id' => 'required',
-        'time_start' => 'required',
-        'time_end' => 'required',
-        'day' => 'required'
-    ]);
-
-    // Check if Subject already has a schedule for this section.
-    $schedule = $section->schedules()->where('subject_id', $request->subject_id)->first();
-    if ($schedule) {
-        return redirect()->route('sections.schedules.index', $section)
-                        ->with('error','Subject already has a schedule for this section.');
-    }
-
-    // Check if There is a conflict with another subject time in this section for the same day.
-    $conflict = $section->schedules()->where('subject_id', '!=', $request->subject_id)
-                        ->where('day', $request->day)
-                        ->where(function ($query) use ($request) {
-                            $query->whereBetween('time_start', [$request->time_start, $request->time_end])
-                                    ->orWhereBetween('time_end', [$request->time_start, $request->time_end]);
-                        })->first();
-
-    if ($conflict) {
-        return redirect()->route('sections.schedules.index', $section)
-                        ->with('error','There is a conflict with another subject time in this section for the same day.');
-    }
-
-    // Check if There is a conflict with another schedule for the same room and day in this section.
-    $conflict = $section->schedules()->where('room_id', $request->room_id)
-                                ->where('day', $request->day)
-                                ->where(function ($query) use ($request) {
-                                    $query->whereBetween('time_start', [$request->time_start, $request->time_end])
-                                            ->orWhereBetween('time_end', [$request->time_start, $request->time_end]);
-                                })->first();
-    if ($conflict) {
-        return redirect()->route('sections.schedules.index', $section)
-                        ->with('error','There is a conflict with another schedule for the same room and day in this section.');
-    }
-
     // Check if There is a conflict with another schedule in another section for the same room and day.
-    $conflict = Schedule::where('room_id', $request->room_id)
-                        ->where('day', $request->day)
-                        ->where(function ($query) use ($request) {
-                            $query->whereBetween('time_start', [$request->time_start, $request->time_end])
-                                    ->orWhereBetween('time_end', [$request->time_start, $request->time_end]);
-                        })->first();
-    if ($conflict) {
+        $conflict = Schedule::where('room_id', $request->room_id)
+                            ->where('day', $request->day)
+                            ->where(function ($query) use ($request) {
+                                $query->whereBetween('time_start', [$request->time_start, $request->time_end])
+                                        ->orWhereBetween('time_end', [$request->time_start, $request->time_end]);
+                            })->first();
+        if ($conflict) {
+            return redirect()->route('sections.schedules.index', $section)
+                            ->with('error','There is a conflict with another schedule in another section for the same room and day.');
+        }
+
+        $section->schedules()->create($request->all());
+        
         return redirect()->route('sections.schedules.index', $section)
-                        ->with('error','There is a conflict with another schedule in another section for the same room and day.');
-    }
-
-    $section->schedules()->create($request->all());
-
-      return redirect()->route('sections.schedules.index', $section)
                         ->with('success','Schedule created successfully.');
     }
 
