@@ -7,14 +7,9 @@
         </div>
     @endif
 
-    @if ($errors->any())
+    @if (session('error'))
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            {{ session('error') }}
         </div>
     @endif
 
@@ -26,60 +21,54 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="card">
-            <div class="card-header">Add Schedule</div>
+            <div class="card-header">Create Schedule</div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('sections.schedules.store', $section) }}" method="post">
                     @csrf
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Subject:</label>
-                                <select class="form-control" name="subject_id">
-                                    @foreach ($subjects as $subject)
-                                    <option value="{{ $subject->id }}">{{ $subject->name }} || {{ $subject->level }} || {{ $subject->period }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Rooms:</label>
-                                <select class="form-control" name="room_id">
-                                    @foreach ($rooms as $room)
-                                    <option value="{{ $room->id }}">{{ $room->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Start Time:</label>
-                                <input type="time" name="time_start" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>End Time:</label>
-                                <input type="time" name="time_end" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Day:</label>
-                                <select class="form-control" name="day">
-                                    <option value="MON">Monday</option>
-                                    <option value="TUE">Tuesday</option>
-                                    <option value="WED">Wednesday</option>
-                                    <option value="THU">Thursday</option>
-                                    <option value="FRI">Friday</option>
-                                    <option value="SAT">Saturday</option>
-                                    <option value="SUN">Sunday</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 text-center">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+
+                    <div class="form-group">
+                        <label for="subject_id">Subject</label>
+                        <select name="subject_id" id="subject_id" class="form-control">
+                            @foreach ($subjects as $subject)
+                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="room_id">Room</label>
+                        <select name="room_id" id="room_id" class="form-control">
+                            @foreach ($rooms as $room)
+                                <option value="{{ $room->id }}">{{ $room->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time_start">Start Time</label>
+                        <input type="time" name="time_start" id="time_start" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time_end">End Time</label>
+                        <input type="time" name="time_end" id="time_end" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="day">Day</label>
+                        <select name="day" id="day" class="form-control">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </div>
                 </form>
             </div>
