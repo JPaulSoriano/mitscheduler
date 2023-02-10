@@ -75,20 +75,7 @@ class ScheduleController extends Controller
                             ->with('error','There is a conflict with another subject time in this section for the same day.');
         }
 
-
-        // Check if There is a conflict with another schedule for the same room and day in this section.
-        $conflict = $section->schedules()->where('room_id', $request->room_id)
-                                    ->where('day', $request->day)
-                                    ->where(function ($query) use ($request) {
-                                        $query->whereBetween('time_start', [$request->time_start, $request->time_end])
-                                                ->orWhereBetween('time_end', [$request->time_start, $request->time_end]);
-                                    })->first();
-        if ($conflict) {
-            return redirect()->route('sections.schedules.index', $section)
-                            ->with('error','There is a conflict with another schedule for the same room and day in this section.');
-        }
-        
-    // Check if There is a conflict with another schedule in another section for the same room and day.
+        // Check if There is a conflict with another schedule in another section for the same room and day.
         $conflict = Schedule::where('room_id', $request->room_id)
                             ->where('day', $request->day)
                             ->where(function ($query) use ($request) {
@@ -101,7 +88,7 @@ class ScheduleController extends Controller
         }
 
         $section->schedules()->create($request->all());
-        
+
         return redirect()->route('sections.schedules.index', $section)
                         ->with('success','Schedule created successfully.');
     }
@@ -112,7 +99,7 @@ class ScheduleController extends Controller
         $request->validate([
             'teacher_id' => 'required'
         ]);
-  
+
         if($request->teacher_id == $schedule->teacher_id)
         {
             $schedule->update(['teacher_id' => null]);
@@ -120,7 +107,7 @@ class ScheduleController extends Controller
 
             $schedule->update($request->all());
         }
-  
+
         return redirect()->route('teachers.schedules.assign', $request->teacher_id)
                         ->with('success','Schedule assigned successfully');
     }
